@@ -1,5 +1,8 @@
-import React from "react";
-import SuccessCard from "../components/SuccessCard";
+import React from 'react';
+import Slider from 'react-slick';
+import SuccessCard from '../components/SuccessCard';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
   const successDetails = [
@@ -57,18 +60,49 @@ function Home() {
     },
   ];
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                initialSlide: 1
+            }
+        }
+    ]
+};
+
   return (
     <div className="pt-12">
       <h1 className="font-BarlowCondensed text-center font-medium tracking-wide text-3xl">
         Success Stories
       </h1>
       <main className="w-full h-full p-10">
-        {successDetails.map((details, index) => (
-          <div key={index} className="p-6">
-            <SuccessCard {...details} />
-          </div>
-        ))}
-      </main>
+            <Slider {...settings}>
+                {successDetails.map((details, index) => (
+                    <div key={index} className="p-2">
+                        <SuccessCard {...details} />
+                    </div>
+                ))}
+            </Slider>
+        </main>
     </div>
   );
 }
