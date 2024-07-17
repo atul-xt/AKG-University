@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         BarlowCondensed: ['Barlow Condensed', 'sans-serif'],
+        BonaNova: ['Bona Nova SC', 'serif'],
 
       }
     },
